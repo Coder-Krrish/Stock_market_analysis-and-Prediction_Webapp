@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bull Bear Insight</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <style>
+        /* styles.css */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+
+header {
+    background-color: #030221;
+    color: #ecf0f1;
+    padding: 20px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #030221;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+}
+
+.navbar .logo {
+    font-size: 45px;
+    font-weight: 500;
+    font-family: 'Cambria', Cochin, Georgia, Times, 'Times New Roman', serif;
+    cursor: pointer;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 21px;
+}
+
+.navbar ul li a {
+    color: #fcff98;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #333;
+    background-color: #8cb2ed;
+    border-radius: 20px 10px;
+}
+
+.navbar .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.navbar .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        display: none;
+    }
+
+    .navbar ul.show {
+        display: flex;
+    }
+
+    .navbar .menu-toggle {
+        display: flex;
+    }
+}
+
+.hero {
+    background: url('/static/bg.avif') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 8rem 0;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero .cta {
+    display: inline-block;
+    background-color: #ffd700;
+    color: #333;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.hero .cta:hover {
+    background-color: #fff;
+    color: #333;
+    transform: scale(1.05);
+}
+
+.hero .cta.secondary {
+    background-color: #fff;
+    color: #333;
+}
+
+.hero .cta.secondary:hover {
+    background-color: #ffd700;
+    color: #333;
+    transform: scale(1.05);
+}
+
+.features {
+    background-color: #f9f9f9;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.features .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.features .feature {
+    background-color: #fff;
+    width: 22%;
+    margin: 1rem 0;
+    padding: 2rem;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s, box-shadow 0.3s;
+}
+
+.features .feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ticker {
+    background-color: rgb(118, 117, 117);
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ticker .stock-ticker {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ticker .ticker-content {
+    display: flex;
+    animation: ticker-scroll 20s linear infinite;
+}
+
+.ticker .ticker-item {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.predictions {
+    background-color: whitesmoke;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.predictions .container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.predictions .prediction-list {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.predictions .prediction-card {
+    background-color: #fff;
+    width: 30%;
+    margin: 1rem;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.predictions .prediction-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials {
+    background-color: whitesmoke;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.testimonials .container {
+    display: flex;
+    justify-content: center;
+}
+
+.testimonials .testimonial-list {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.testimonials .testimonial-card {
+    background-color: #fff;
+    width: 45%;
+    margin: 1rem;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.testimonials .testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials .quote-icon {
+    font-size: 2rem;
+    color: #ffd700;
+    margin-bottom: 1rem;
+}
+
+.testimonials .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.testimonials .user-info img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+}
+
+.cta {
+    background-color: darkslateblue;
+    color: #fff;
+    padding: 2em 0;
+    margin-bottom: 2em;
+    text-align: center;
+    border-radius: 10px;
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+}
+
+.cta .cta {
+    display: inline-block;
+    background-color: #ffd700;
+    color: #333;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.cta .cta:hover {
+    background-color: #fff;
+    color: #333;
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer h3 a {
+    color: #ecf0f1;
+    text-decoration: none;
+    cursor: auto;
+    font-size: 35px;
+    text-decoration: underline;
+}
+
+footer #contact p#mail a {
+    color: white;
+    text-decoration: none;
+    cursor: auto;
+}
+
+footer #contact i {
+    margin-right: 10px;
+}
+
+footer hr {
+    border: 1px solid #ecf0f1;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+    </style>
+    <header>
+        <nav class="navbar">
+            <div class="logo" onclick="window.location.href = 'index';">B B I</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about">About</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="news">News</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h2>Welcome to Bull Bear Insight</h2>
+            <p>Your go-to platform for real-time stock analysis and accurate predictions</p>
+            <a href="login" class="cta">Get Started</a>
+            <a href="about" class="cta secondary">Learn More</a>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <div class="feature">
+                <h3>Real-Time Stock Prices</h3>
+                <p>Get the latest stock prices of your favorite companies in real-time.</p>
+            </div>
+            <div class="feature">
+                <h3>In-Depth Analysis</h3>
+                <p>Comprehensive analysis of stock trends and market movements.</p>
+            </div>
+            <div class="feature">
+                <h3>Accurate Predictions</h3>
+                <p>Utilize advanced algorithms to predict future stock prices.</p>
+            </div>
+            <div class="feature">
+                <h3>User-Friendly Interface</h3>
+                <p>Easy to navigate interface for both novice and experienced traders.</p>
+            </div>
+        </div>
+    </section>
+    <section class="ticker">
+        <div class="container">
+            <div class="stock-ticker">
+                <div class="ticker-content">
+                    <div class="ticker-item">AAPL: $145.30</div>
+                    <div class="ticker-item">GOOGL: $2731.23</div>
+                    <div class="ticker-item">AMZN: $3372.89</div>
+                    <div class="ticker-item">MSFT: $299.72</div>
+                    <div class="ticker-item">TSLA: $753.20</div>
+                    <div class="ticker-item">FB: $355.64</div>
+                    <div class="ticker-item">NFLX: $529.89</div>
+                    <div class="ticker-item">NVDA: $206.11</div>
+                    <div class="ticker-item">DIS: $178.45</div>
+                    <div class="ticker-item">V: $230.54</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="predictions">
+        <div class="container">
+            <h2>Our Latest Predictions</h2>
+            <div class="prediction-list">
+                <div class="prediction-card">
+                    <h3>Apple Inc. (AAPL)</h3>
+                    <p>Prediction: $150.00</p>
+                    <p>Confidence: 82.45%</p>
+                </div>
+                <div class="prediction-card">
+                    <h3>Alphabet Inc. (GOOGL)</h3>
+                    <p>Prediction: $2800.00</p>
+                    <p>Confidence: 85%</p>
+                </div>
+                <div class="prediction-card">
+                    <h3>Amazon.com Inc. (AMZN)</h3>
+                    <p>Prediction: $3500.00</p>
+                    <p>Confidence: 82%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial-list">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa fa-quote-left"></i></div>
+                    <p>"Bull Bear Insight has transformed my trading strategy!"</p>
+                    <div class="user-info">
+                        <img src="/static/random.jpg" alt="Neeraj Kumar">
+                        <p>Ashley Heath</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa fa-quote-left"></i></div>
+                    <p>"Accurate predictions and real-time data, highly recommend."</p>
+                    <div class="user-info">
+                        <img src="/static/random1.jpg" alt="Jane Smith">
+                        <p>Carter Latham</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cta">
+        <div class="container">
+            <h2>Join Bull Bear Insight Today!</h2>
+            <a href="register" class="cta">Sign Up Now</a>
+        </div>
+    </section>
+    <footer>
+        <section id="contact">
+            <h3><a href="#">Contact Us</a></h3>
+            <p>We'd love to hear from you! Whether you have a question, need support, or want to learn more about our services, feel free to reach out to us at:</p>
+            <p id="mail"><i class="fa fa-envelope"> Email: <a href= "#">capstonep359@gmail.com</i></a><br>
+                <i class="fa fa-phone"> Phone: (+91) 9835655822</i><br>
+                <i class="fa fa-home"> Address: IIT Patna, Bihta, Patna, Bihar</i></p>
+                <p>Want to message? <a style="color: orangered" href="contact">Click here</a></p>
+        </section>
+        <hr>
+        <p>&copy; 2024 Bull Bear Insight. All rights reserved.</p>
+        <hr>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('#mobile-menu');
+        const nav = document.querySelector('nav ul');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
+
+        // Rotating stock ticker
+        const tickerContent = document.querySelector('.ticker-content');
+        const tickerItems = document.querySelectorAll('.ticker-item');
+        let tickerWidth = 0;
+
+        tickerItems.forEach(item => {
+            tickerWidth += item.offsetWidth + 30; // Include margin
+        });
+
+        tickerContent.style.width = `${tickerWidth}px`;
+
+        function rotateTicker() {
+            tickerContent.style.transition = 'transform 10s linear';
+            tickerContent.style.transform = `translateX(-${tickerWidth}px)`;
+            setTimeout(() => {
+                tickerContent.style.transition = 'none';
+                tickerContent.style.transform = 'translateX(0)';
+                tickerContent.appendChild(tickerContent.firstElementChild);
+                setTimeout(() => {
+                    tickerContent.style.transition = 'transform 10s linear';
+                }, 10);
+            }, 10000);
+        }
+
+        setInterval(rotateTicker, 10000);
+    </script>
+</body>
+</html>

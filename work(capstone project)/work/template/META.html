@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ticker }} Stock Details</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.png" />
+    <style>
+        body {
+            background: rgb(197, 196, 196);
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table.data th, table.data td {
+            padding: 8px;
+            text-align: center;
+        }
+        table.data th {
+            background-color: #0452aa;
+            color: white;
+        }
+        table.data tr:nth-child(even) { background-color: #f3f0f0; }
+        table.data tr:nth-child(odd) { background-color: #ccd3e0; }
+
+        div.section {
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 15px;
+            box-shadow: 0 23px 20px -24px hsla(219, 37%, 18%, 0.24);
+            padding: 25px;
+            margin-bottom: 50px;
+        }
+        nav {
+            position: relative;
+            text-align: center;
+            border: 1px solid rgb(2, 2, 33);
+            background: linear-gradient(to right, rgb(2, 2, 33), rgb(10, 219, 219));
+            margin-bottom: 25px;
+            color: white;
+            font-size: 30px;
+        }  
+        div#detail {
+            position: relative;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: white;
+            font-size: 18px;
+            border-block: 1px solid gray;
+        }
+        li-1 a, li-2 a, li-3 a {
+            display: inline-block;
+            padding: 12px 8pc;
+            color: rgb(112, 112, 112);
+            text-decoration: none;
+            cursor: auto;
+        }
+        a#dumb {
+            padding-left: 14pc;
+        }
+        a#beta {
+            position: relative;
+            left: 2.5pc;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>Bull Bear Insight</ul>
+    </nav>
+
+    <div id="table" class="section">
+        <h1>{{ info['shortName'] }} ({{ info['symbol'] }}) Stock Details</h1>
+        
+        <h2>Company Information</h2>
+        <div id="detail">
+            <li-1><a href="#">Sector: {{ info['sector'] }}</a></li-1>
+            <li-1><a href="#">Industry: {{ info['industry'] }}</a></li-1>
+            <li-1><a href="#">Market Cap: {{ info['marketCap'] | int | round(2) }}</a></li-1><br>
+            <li-2><a href="#">Previous Close: {{ info['previousClose'] }}</a></li>
+            <li-2><a href="#">Open: {{ info['open'] }}</a></li>
+            <li-2><a id="dumb" href="#">52 Week High: {{ info['fiftyTwoWeekHigh'] }}</a></li><br>
+            <li-3><a href="#">52 Week Low: {{ info['fiftyTwoWeekLow'] }}</a></li>
+            <li-3><a href="#">Dividend Yield: {{ info['dividendYield'] }}</a></li>
+            <li-3><a id="beta" href="#">Beta: {{ info['beta'] }}</a></li>
+        </div>
+
+        <h2>Stock Data for the Last Week</h2>
+        {{ stock_table|safe }}
+    </div>
+   <div class="section">
+    <h2>Revenue and Net Income</h2>
+    <img src="data:image/png;base64,{{ image_base64_37 }}" alt="Revenue and Net Income Plot">
+</div>
+<div class="section">
+    <h2>Total Assets and Total Liabilities</h2>
+    <img src="data:image/png;base64,{{ image_base64_38 }}" alt="Total Assets and Total Liabilities Plot">
+</div>
+<div class="section">
+    <h2>Net Change in Cash</h2>
+    <img src="data:image/png;base64,{{ image_base64_39 }}" alt="Net Change in Cash Plot">
+</div>
+<div class="section">
+    <h2>Stock Price Forecast</h2>
+    <img src="data:image/png;base64,{{ image_base64_40 }}" alt="Stock Price Forecast Plot">
+</div>
+
+
+    <footer style="background-color: #2c3e50; color: #ecf0f1; padding: 20px; text-align: center; font-family: Arial, sans-serif;">
+        <h2 style="color: #ecf0f1;">Bull Bear Insight</h2>
+        <p style="color: #bdc3c7;">Empowering investors with the latest insights and analysis.</p>
+      
+        <hr style="border: 0; border-top: 1px solid #34495e; margin: 20px 0;">
+        <p style="color: #bdc3c7;">&copy; 2024 Bull Bear Insight. All rights reserved.</p>
+    </footer>
+</body>
+</html>
