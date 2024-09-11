@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Bull Bear Insight</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #bbc8e8b4;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            background-color: #030221;
+            color: #fff;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: medium;
+        }
+
+        .navbar .logo {
+            font-size: 45px;
+            font-weight: 500;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            cursor: pointer;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 21px;
+        }
+
+        .navbar ul li a {
+            color: #fcff98;
+            text-decoration: none;
+        }
+
+        .navbar .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .navbar .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        li {
+            padding: 10px 10px;
+            border-bottom: 2px solid #ddd;
+            cursor: pointer;
+            position: relative;
+        }
+
+        li:hover {
+            background-color: #8cb2ed;
+            border-radius: 20px 10px;
+        }
+
+        li button {
+            display: none;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        li:hover button {
+            display: inline-block;
+        }
+
+        .about-us {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-us h2, .about-us h3 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .about-us p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .about-us ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-us li {
+            background: #e8e8e8;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #us {
+            position: relative;
+            font-size: 40px;
+            bottom: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+
+        .about-us a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .team-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        #our {
+            position: relative;
+            font-size: 40px;
+            bottom: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+
+        .card {
+            background: whitesmoke;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+            margin: 12px;
+            width: 25%;
+            text-align: center;
+            padding: 10px;
+            transition: transform 0.7s ease;
+        }
+
+        .card p {
+            text-align: left;
+            padding-left: 10px;
+            font-size: 19px;
+            font-weight: 300;
+            color: rgb(12, 181, 211);
+        }
+
+        .card hr {
+            position: relative;
+            bottom: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 80%;
+            border-radius: 10%;
+            padding: 0.5px;
+            border-block: 2px solid rgba(0, 10, 44, 0.83);
+        }
+
+        .card:hover {
+            background-color: lightgoldenrodyellow;
+            transform: scale(1.07);
+        }
+
+        .card h4 {
+            position: relative;
+            bottom: 12px;
+            text-align: left;
+            padding-left: 10px;
+            margin-top: 10px;
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .card p-1 {
+            color: #666;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #contact p a {
+            color: white;
+            text-decoration: none;
+            cursor: auto;
+        }
+
+        #contact h3 a {
+            color: white;
+            text-decoration: none;
+            cursor: auto;
+            font-size: 25px;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- <header>
+        <h1>Bull Bear Insight</h1>
+        <p>Empowering Investors with Accurate Stock Analysis and Predictions</p>
+    </header> -->
+
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href = 'indexAL';">B B I</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="indexAL">Home</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="aboutAL">About</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="newsAL">News</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contactAL">Contact</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="dashboard">Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <section id="about" class="about-us">
+        <h2 id="us">About Us</h2>
+        <p>Welcome to Bull Bear Insight</p>
+        <p>At Bull Bear Insight, we believe in empowering investors with the tools and knowledge needed to make informed decisions in the ever-changing stock market landscape. Founded by a team of financial experts and data scientists, our mission is to provide accurate, reliable, and timely stock analysis and predictions to help you navigate the complexities of investing.</p>
+    </section>
+
+    <section id="vision" class="about-us">
+        <h3>Our Vision</h3>
+        <p>Our vision is to become the leading provider of stock analysis and prediction services, transforming how individuals and businesses approach their investment strategies. We aim to create a world where every investor, regardless of experience level, can make confident and informed decisions that lead to financial growth and stability.</p>
+    </section>
+
+    <section id="offer" class="about-us">
+        <h3>What We Offer</h3>
+        <ul>
+            <li><strong>Comprehensive Stock Analysis:</strong> Our platform offers in-depth analysis of stocks, utilizing a combination of traditional financial metrics and advanced machine learning algorithms. We provide detailed reports on company performance, market trends, and potential investment opportunities.</li>
+            <li><strong>Accurate Predictions:</strong> Leveraging cutting-edge technology and vast amounts of financial data, our predictive models deliver highly accurate forecasts of stock performance. These predictions help our users anticipate market movements and make strategic investment choices.</li>
+            <li><strong>Real-Time Data:</strong> Stay ahead of the market with our real-time data feeds. We provide up-to-the-minute stock prices, news updates, and market insights, ensuring that you are always informed and ready to act on the latest developments.</li>
+            <li><strong>User-Friendly Interface:</strong> Our intuitive platform is designed with the user in mind. Whether you are a seasoned investor or just starting out, our easy-to-navigate interface makes it simple to access the information and tools you need.</li>
+        </ul>
+    </section>
+
+    <section id="team" class="about-us">
+        <h3 id="our">Our Team</h3>
+        <div class="team-cards">
+            <div class="card">
+                <img src="{{ url_for('static', filename='krish.jpg') }}" alt="Krrish"><br>
+                <p>Front-end Developer</p>
+                <h4>Krrish Raj</h4>
+                <hr>
+                <p-1>Expertly crafted front-end solutions tailored for stock market analysis provide a seamless user experience, intuitive design, and efficient navigation, enhancing user engagement and decision-making capabilities.</p-1>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='priyanshu.jpg') }}" alt="Priyanshu"><br>
+                <p>Backend Developer</p>
+                <h4>Priyanshu Nandan</h4>
+                <hr>
+                <p-1>Specializing in advanced backend and database solutions tailored for precise stock market analysis, the offerings ensure seamless integration and reliable data insights, empowering informed decision-making in finance.</p-1>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='aditi.jpg') }}" alt="Aditi"><br>
+                <p>Data Analyst</p>
+                <h4>Aditi Mandal</h4>
+                <hr>
+                <p-1>Providing expert data visualization and graphing solutions, the services ensure clear and insightful representations of complex data, enhancing understanding and facilitating informed decision-making.</p-1>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='ravi.jpg') }}" alt="Ravi"><br>
+                <p>ML Engineer</p>
+                <h4>Ravi Raj</h4>
+                <hr>
+                <p-1>Specializing in predictive analytics for stock market projects, the expertise ensures accurate forecasts and actionable insights, enhancing decision-making and strategic planning in the financial sector.</p-1>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='vibhas.jpg') }}" alt="Vibhas"><br>
+                <p>Data Analyst</p>
+                <h4>Vibhas Prabhanjan</h4>
+                <hr>
+                <p-1>Specializing in data cleansing and analysis, the services ensure accurate, clean data and insightful analysis, empowering informed decision-making in finance.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <section id="contact">
+            <h3><a href="contact">Contact Us</a></h3>
+            <p>We'd love to hear from you! Whether you have a question, need support, or want to learn more about our services, feel free to reach out to us at:</p>
+            <p><i class="fa fa-envelope"> Email: <a href="#">capstonep359@gmail.com</i></a><br>
+                <i class="fa fa-phone"> Phone: (+91) 9835655822</i><br>
+                <i class="fa fa-home"> Address: IIT Patna, Bihta, Patna, Bihar</i></p>
+            <p>Want to message? <a style="color: orangered" href="contactAL">Click here</a></p>
+        </section>
+        <hr>
+        <p>&copy; 2024 Bull Bear Insight. All rights reserved.</p>
+        <hr>
+    </footer>
+
+    <script>
+        // Example of adding smooth scroll for internal links (optional)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
